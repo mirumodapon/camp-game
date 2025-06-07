@@ -1,3 +1,12 @@
+const hints = [
+  { label: 'Mission 6', content: '老四說：『大哥說謊。』' },
+  { label: 'Mission 4', content: '但坐在主席左邊的人卻在會議記錄簿寫下總共有 8 個人參加' },
+  { label: 'Mission 3', content: '有三個人排隊' },
+  { label: 'Mission 2', content: 'C：「我和 D 都是清白的。」' },
+  { label: 'Mission 2', content: '誰洩漏了機密？' },
+  { label: 'Mission 1', content: 'B：「我不是平民」' },
+]
+
 let main;
 let nodes;
 const center = {};

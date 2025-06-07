@@ -1,3 +1,12 @@
+const hints = [
+  { label: 'Mission 2', content:  'A：「不是我，也不是 C。」' } ,
+  { label: 'Mission 4', content: '某研討會上，有誠實國跟說謊國的學者們參加' },
+  { label: 'Mission 4', content: '每個人都說坐在自己右邊的是說謊國的人' },
+  { label: 'Mission 6', content: '老大說：『是老四吃的。』' },
+  { label: 'Mission 6', content: '老二說：『我沒有吃。』' },
+  { label: 'Mission 1', content: '好人只會說實話，壞人只會說謊' },
+]
+
 let main;
 let nodes;
 const center = {};

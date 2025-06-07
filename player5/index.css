@@ -1,0 +1,64 @@
+
+:root {
+  --bg-color: #172030;
+  --card-color: #1E2837;
+  --text-color: #E5E7EB;
+}
+
+body {
+  width: 100dvw;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow-x: hidden;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+#app {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+
+.card {
+  width: 28vw;
+  aspect-ratio: 1 / 1.41421;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.card .wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s linear;
+  transform-style: preserve-3d;
+  background-color: var(--card-color);
+  border-radius: 5px;
+  border: 1px solid var(--text-color);
+}
+
+.card :is(.front, .back) {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+}
+
+.card .back {
+  transform: rotateY(180deg);
+}
+
+.flipped .wrapper {
+  transform: rotateY(180deg);
+}

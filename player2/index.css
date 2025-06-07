@@ -1,0 +1,28 @@
+:root {
+  --circle-color: #1E2837;
+  --bg-color: #172030;
+  --text-color: #E5E7EB;
+
+  --circle-size: 100px;
+}
+
+body, #app {
+  width: 100dvw;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--text-color);
+}
+
+body {
+  background-color: var(--bg-color);
+}
+
+#app {
+  background-color: var(--circle-color);
+}
+
+.hint {
+  position: fixed;
+}
