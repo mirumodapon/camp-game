@@ -65,7 +65,7 @@ class Card extends HTMLElement {
 
     setTimeout(() => {
       el.classList.toggle('flipped');
-    }, 500);
+    }, 1000);
   }
 }
 
