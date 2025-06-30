@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/card/index.css">
+  <title>Player 3</title>
+  <script>
+    let hints = []
+
+    fetch('/api/hints/player/3')
+      .then(res => res.json())
+      .then(data => hints = data.hints)
+      .then(h => (hints = h))
+  </script>
+  <script src="/card/index.js"></script>
+  <script src="/prevent-debugger.js"></script>
+</head>
+<body>
+  <main id="app">
+  </main>
+</body>
+</html>
+
