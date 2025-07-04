@@ -15,8 +15,7 @@ export default [
   {
     label: 'Mission 2',
     answers: [
-      'C 說謊',
-      'D 洩漏',
+      'D',
     ],
     hints: [
       'C：「我和 D 都是清白的。」',
@@ -31,9 +30,7 @@ export default [
   {
     label: 'Mission 3',
     answers: [
-      'C',
-      'B',
-      'A',
+      'CBA',
     ],
     hints: [
       'B：「C 不是最後」',
@@ -45,8 +42,8 @@ export default [
   },
   {
     label: 'Mission 4',
-    answer: [
-      8,
+    answers: [
+      '8',
     ],
     hints: [
       '某研討會上，有誠實國跟說謊國的學者們參加',
@@ -59,13 +56,8 @@ export default [
   },
   {
     label: 'Mission 5',
-    answer: [
-      'A',
-      'C',
-      'D',
-      'F',
-      'B',
-      'E',
+    answers: [
+      'ACDFBE',
     ],
     hints: [
       'A、B、C、D、E、F六個人圍著圓桌坐下',
@@ -78,8 +70,8 @@ export default [
   },
   {
     label: 'Mission 6',
-    answer: [
-      5,
+    answers: [
+      '5',
     ],
     hints: [
       '媽媽剛烤好放在桌上的餅乾被吃光了',
