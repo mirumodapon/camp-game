@@ -6,6 +6,7 @@ const router = Router()
 
 router.get('/reset', (req, res) => {
   req.app.set('hints', setup())
+  req.app.set('status', ['-', '-', '-', '-', '-', '-'])
 
   res.status(200).send({ message: 'Completes' })
 })
@@ -40,11 +41,22 @@ router.post('/answer/:question/:answer', (req, res) => {
   }
 
   if (!question.answers.includes(answer)) {
+    const status = req.app.get('status')
+    status[+req.params.question] = 'incorrect ❌'
+    req.app.set('status', status)
     res.status(404).send({ message: 'incorrect' })
     return
   }
 
+  const status = req.app.get('status')
+  status[+req.params.question] = 'correct ✅'
+  req.app.set('status', status)
+
   res.status(200).send({ message: 'correct' })
+})
+
+router.get('/status', (req, res) => {
+  res.status(200).send({ status: req.app.get('status') })
 })
 
 export default router

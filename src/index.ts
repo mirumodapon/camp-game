@@ -13,6 +13,7 @@ const io = new Server(server)
 app.set('io', io)
 app.set('hints', setup())
 app.set('player', 6)
+app.set('status', ['-', '-', '-', '-', '-', '-'])
 app.use('/api', api)
 
 app.use(express.static(join(cwd(), 'public')))
