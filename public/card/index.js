@@ -16,6 +16,7 @@ function init() {
     main.appendChild(card);
   })
 
+  help()
   render()
 }
 
@@ -56,6 +57,27 @@ class Card extends HTMLElement {
       el.classList.toggle('flipped');
     }, 1000);
   }
+}
+
+function help() {
+  const help = document.createElement('dialog')
+  const content = document.createElement('div')
+  const close = document.createElement('button')
+
+  content.innerHTML = `
+    <p>這裡總共有 15 張卡片</p>
+    <p>並且每個線索會隨機出現在卡片後方，每 20 秒會重新洗牌</p>
+    <p>試著找出所有線索</p>
+  `
+
+  close.innerHTML = '關閉'
+
+  close.addEventListener('click', () => { help.close() })
+
+  document.body.appendChild(help)
+  content.appendChild(close)
+  help.appendChild(content)
+  help.showModal()
 }
 
 customElements.define('sitcon-card', Card);

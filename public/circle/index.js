@@ -12,6 +12,7 @@ function init() {
 
   main.style.clipPath = `circle(var(--circle-size) at ${center.x}px ${center.y}px)`;
 
+  help();
   render();
 }
 
@@ -91,6 +92,26 @@ function onTouchEnd(e) {
   main.style.clipPath = `circle(100px at ${center.x}px ${center.y}px)`;
 }
 
+function help() {
+  const help = document.createElement('dialog')
+  const content = document.createElement('div')
+  const close = document.createElement('button')
+
+  content.innerHTML = `
+    <p>你可以拖動中間的圈圈，來試著偷看螢幕裡的線索</p>
+    <p>這些線索每 3 秒會更換位置</p>
+    <p>你能找出所有線索嗎</p>
+  `
+
+  close.innerHTML = '關閉'
+
+  close.addEventListener('click', () => { help.close() })
+
+  document.body.appendChild(help)
+  content.appendChild(close)
+  help.appendChild(content)
+  help.showModal()
+}
 
 document.addEventListener('DOMContentLoaded', init);
 document.addEventListener('resize', onResize)

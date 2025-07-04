@@ -26,3 +26,34 @@ body {
 .hint {
   position: fixed;
 }
+
+dialog {
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: 5px;
+  outline: none;
+}
+
+dialog::focus {
+  outline: none;
+}
+
+dialog::backdrop {
+  background: var(--bg-color);
+}
+
+dialog button {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-color);
+  text-decoration: underline;
+  float: right;
+  cursor: pointer;
+}
+
+dialog button::focus {
+  outline: none;
+}
+
