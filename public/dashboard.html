@@ -6,41 +6,84 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <title>Document</title>
+  <style>
+    main, p {
+      display: flex;
+      padding: 50px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  </style>
+  <script>
+  </script>
 </head>
 <body>
     <template class="card-template">
       <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title"></h5>
+          <p class="card-subtitle"></p>
         </div>
       </div>
     </template>
     <main>
     </main>
 
+    <p>
+      <button type="button" class="btn btn-danger" onclick="reset()">Reset</button>
+      <button type="button" class="btn btn-primary" onclick="showHint()">Show Hint</button>
+    </p>
+
     <script>
       const template = document.querySelector('.card-template')
       const main = document.querySelector('main')
 
+      function reset() {
+        fetch('/api/reset')
+        init()
+      }
+
+      function init() {
+        document.querySelector('main').innerHTML = ''
+        Array.from({ length: 6 }, (_, index) => index + 1)
+          .forEach((index) => {
+            const card = template.content.cloneNode(true).querySelector('.card')
+
+            card.id = `${index}`
+            card.querySelector('.card-title').textContent = `Mission ${index}: -`
+
+            main.appendChild(card)
+          })
+      }
+
+    function showHint() {
+      fetch('/api/questions')
+        .then(res => res.json())
+        .then(({ questions }) => {
+          questions.forEach((question, index) => {
+            const length = question.hints.length
+            const node = document.getElementById(`${index + 1}`).querySelector('.card-subtitle')
+            node.innerText = `總共有 ${length} 個提示`
+          })
+        })
+    }
+
       function render() {
-        main.innerHTML = ''
         fetch('/api/status')
           .then(res => res.json())
           .then(({ status }) => {
             status
             .forEach((status, index) => {
-              const card = template.content.cloneNode(true)
-
-              card.id = index + 1
-              card.querySelector('.card-title').textContent = `Mission ${index + 1}: ${status}`
-
-              main.appendChild(card)
+              document
+                .getElementById(`${index + 1}`)
+                .querySelector('.card-title')
+                .textContent = `Mission ${index + 1}: ${status}`
             })
           })
       }
 
-      render();
-      setInterval(render, 10_000);
+      init()
+      setInterval(render, 500);
     </script>
 </body>
 </html>

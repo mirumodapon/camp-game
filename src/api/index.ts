@@ -24,6 +24,10 @@ router.get('/hints', (req, res) => {
   res.status(200).send({ hints: req.app.get('hints') })
 })
 
+router.get('/questions', (_, res) => {
+  res.status(200).send({ questions })
+})
+
 router.get('/hints/player/:player', (req, res) => {
   const hints: string[] = req.app.get('hints')
   const player = req.app.get('player')
