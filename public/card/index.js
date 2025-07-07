@@ -68,6 +68,7 @@ function help() {
     <p>這裡總共有 15 張卡片</p>
     <p>並且每個線索會隨機出現在卡片後方，每 20 秒會重新洗牌</p>
     <p>試著找出所有線索</p>
+    <p>你可以透過按下 <kbd>Ctrl</kbd> + <kbd>h</kbd> 打開答案提交</p>
   `
 
   close.innerHTML = '關閉'
