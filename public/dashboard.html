@@ -30,7 +30,9 @@
     </main>
 
     <p>
-      <button type="button" class="btn btn-danger" onclick="reset()">Reset</button>
+      <button type="button" class="btn btn-danger" onclick="reset(4)">Reset 4</button>
+      <button type="button" class="btn btn-danger" onclick="reset(5)">Reset 5</button>
+      <button type="button" class="btn btn-danger" onclick="reset(6)">Reset 6</button>
       <button type="button" class="btn btn-primary" onclick="showHint()">Show Hint</button>
     </p>
 
@@ -38,8 +40,8 @@
       const template = document.querySelector('.card-template')
       const main = document.querySelector('main')
 
-      function reset() {
-        fetch('/api/reset')
+      function reset(player) {
+        fetch(`/api/reset?player=${player}`)
         init()
       }
 

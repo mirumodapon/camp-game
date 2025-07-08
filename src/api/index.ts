@@ -5,14 +5,10 @@ import { Router } from 'express'
 const router = Router()
 
 router.get('/reset', (req, res) => {
+  req.app.set('player', +(req.query.player ?? 6))
   req.app.set('hints', setup())
   req.app.set('status', ['-', '-', '-', '-', '-', '-'])
 
-  res.status(200).send({ message: 'Completes' })
-})
-
-router.put('player', (req, res) => {
-  req.app.set('player', +(req.query.player ?? 6))
   res.status(200).send({ message: 'Completes' })
 })
 
