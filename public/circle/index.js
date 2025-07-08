@@ -1,5 +1,6 @@
 let main;
 let nodes;
+let helpDialog;
 const center = {};
 const touch = { mousedown: false };
 
@@ -12,7 +13,7 @@ function init() {
 
   main.style.clipPath = `circle(var(--circle-size) at ${center.x}px ${center.y}px)`;
 
-  help();
+  setHelp();
   render();
 }
 
@@ -46,6 +47,10 @@ function onResize() {
 }
 
 function onTouchStart(e) {
+  if (helpDialog.open) {
+    return;
+  }
+
   e.preventDefault();
 
   if (e instanceof MouseEvent) {
@@ -61,6 +66,10 @@ function onTouchStart(e) {
 }
 
 function onTouchMove(e) {
+  if (helpDialog.open) {
+    return;
+  }
+
   e.preventDefault();
 
   let dx, dy;
@@ -83,6 +92,10 @@ function onTouchMove(e) {
 }
 
 function onTouchEnd(e) {
+  if (helpDialog.open) {
+    return;
+  }
+
   e.preventDefault();
 
   if (e instanceof MouseEvent) {
@@ -92,8 +105,8 @@ function onTouchEnd(e) {
   main.style.clipPath = `circle(100px at ${center.x}px ${center.y}px)`;
 }
 
-function help() {
-  const help = document.createElement('dialog')
+function setHelp() {
+  helpDialog = document.createElement('dialog')
   const content = document.createElement('div')
   const close = document.createElement('button')
 
@@ -106,12 +119,12 @@ function help() {
 
   close.innerHTML = '關閉'
 
-  close.addEventListener('click', () => { help.close() })
+  close.addEventListener('click', () => { helpDialog.close() })
 
-  document.body.appendChild(help)
+  document.body.appendChild(helpDialog)
   content.appendChild(close)
-  help.appendChild(content)
-  help.showModal()
+  helpDialog.appendChild(content)
+  helpDialog.showModal()
 }
 
 document.addEventListener('DOMContentLoaded', init);

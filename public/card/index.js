@@ -16,7 +16,7 @@ function init() {
     main.appendChild(card);
   })
 
-  help()
+  setHelp()
   render()
 }
 
@@ -59,7 +59,7 @@ class Card extends HTMLElement {
   }
 }
 
-function help() {
+function setHelp() {
   const help = document.createElement('dialog')
   const content = document.createElement('div')
   const close = document.createElement('button')
