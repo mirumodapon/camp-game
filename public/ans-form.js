@@ -69,7 +69,7 @@ function init() {
 document.addEventListener('DOMContentLoaded', init);
 document.addEventListener('keydown', (e) => {
   console.log(e)
-  if (e.key === 'h' && e.ctrlKey) {
+  if (e.key === 'h' && e.ctrlKey && e.shiftKey) {
     const dialog = document.querySelector('#ans-form')
     dialog.showModal()
   }
